@@ -1,4 +1,4 @@
-/*Entities*/
+--Entities
 
 CREATE TABLE users (
 	ID		SERIAL PRIMARY KEY,
@@ -17,7 +17,7 @@ CREATE TABLE sessions (
 )
 
 
-/*Relations*/
+--Relations
 
 CREATE TABLE friends (
 	ID		SERIAL PRIMARY KEY,
