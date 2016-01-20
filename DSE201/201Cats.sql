@@ -1,0 +1,53 @@
+/*Entities*/
+
+CREATE TABLE users (
+	ID		SERIAL PRIMARY KEY,
+	Name		TEXT,
+	FB_Login	TEXT,
+	UNIQUE (Name, FB_Login)
+)
+
+CREATE TABLE videos (
+	ID		SERIAL PRIMARY KEY,
+	URL		TEXT
+)
+
+CREATE TABLE sessions (
+	ID		SERIAL PRIMARY KEY
+)
+
+
+/*Relations*/
+
+CREATE TABLE friends (
+	ID		SERIAL PRIMARY KEY,
+	User		INTEGER REFERENCES user (ID) UNIQUE,
+	Friend		INTEGER REFERENCES user (ID)
+)
+	
+CREATE TABLE like (
+	ID		SERIAL PRIMARY KEY,
+	Time		TIMESTAMP,
+	User_ID		INTEGER REFERENCES users (ID),
+	Video_ID	INTEGER REFERENCES videos (ID)
+)
+
+CREATE TABLE watch (
+	ID		SERIAL PRIMARY KEY,
+	Time		TIMESTAMP,
+	User_ID		INTEGER REFERENCES users (ID),
+	Video_ID	INTEGER REFERNECES videos (ID) NOT NULL
+)
+
+CREATE TABLE login (
+	ID		SERIAL PRIMARY KEY,
+	Time		TIMESTAMP,
+	User_ID		INTEGER REFERENCES users (ID) UNIQUE,
+	Session_ID	INTEGER REFERENCES session (ID) NOT NULL
+)
+
+CREATE TABLE suggested (
+        ID              SERIAL PRIMARY KEY,
+	Session_ID	INTEGER REFERENCES sessions (ID),
+	Video_ID	INTEGER REFERENCES videos (ID)
+)
