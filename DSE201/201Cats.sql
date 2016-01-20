@@ -53,7 +53,7 @@ CREATE TABLE like (
 	Log_Time	TIMESTAMP,
 	User_ID		INTEGER REFERENCES users (ID),
 	Video_ID	INTEGER REFERENCES videos (ID)
-	UNIQUE(User_ID, Video_ID)
+	UNIQUE(User_ID, Video_ID)	--Each user can LIKE a video once
 )
 
 CREATE TABLE watch (
