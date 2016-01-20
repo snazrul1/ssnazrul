@@ -1,4 +1,4 @@
-/*Entities*/
+--Entities
 
 CREATE TABLE customers (
 	ID		SERIAL PRIMARY KEY,
@@ -23,7 +23,7 @@ CREATE TABLE products (
 )
 
 
-/*Relationships*/
+--Relationships
 
 CREATE TABLE location (
         ID              SERIAL PRIMARY KEY,
