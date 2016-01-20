@@ -30,6 +30,7 @@ CREATE TABLE like (
 	Log_Time	TIMESTAMP,
 	User_ID		INTEGER REFERENCES users (ID),
 	Video_ID	INTEGER REFERENCES videos (ID)
+	UNIQUE(User_ID, Video_ID)
 )
 
 CREATE TABLE watch (
