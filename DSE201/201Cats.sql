@@ -27,7 +27,7 @@ CREATE TABLE users (
 	ID		SERIAL PRIMARY KEY,
 	Name		TEXT,
 	FB_Login	TEXT,
-	UNIQUE (Name, FB_Login)
+	UNIQUE(Name, FB_Login)
 )
 
 CREATE TABLE videos (
