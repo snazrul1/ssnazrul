@@ -70,6 +70,6 @@ CREATE TABLE login (
 
 CREATE TABLE suggested (
         ID              SERIAL PRIMARY KEY,
-	Session_ID	INTEGER REFERENCES sessions (ID),
-	Video_ID	INTEGER REFERENCES videos (ID)
+	Session_ID	INTEGER REFERENCES sessions (ID) NOT NULL,
+	Video_ID	INTEGER REFERENCES videos (ID) NOT NULL
 )
