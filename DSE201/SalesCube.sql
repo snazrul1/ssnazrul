@@ -43,13 +43,13 @@ CREATE TABLE sales (
         ID              SERIAL PRIMARY KEY,
 	Quantity	FLOAT,
 	Price_Paid	FLOAT,
-	Costumer_ID	INTEGER REFERENCES costumers (ID),
+	Costumer_ID	INTEGER REFERENCES costumers (ID) NOT NULL,
 	Product_ID	INTEGER REFERENCES products (ID) NOT NULL
 )
 
 CREATE TABLE type (
         ID              SERIAL PRIMARY KEY,
-	Category_ID	INTEGER REFERENCES category (ID) UNIQUE,
+	Category_ID	INTEGER REFERENCES category (ID) NOT NULL,
 	Product_ID	INTEGER REFERENCES products (ID) NOT NULL
 )	
 	
