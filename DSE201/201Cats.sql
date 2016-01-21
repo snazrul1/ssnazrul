@@ -24,10 +24,8 @@ is redundant since Facebook friendships are symmetric.
 --Entities
 
 CREATE TABLE users (
-	ID		SERIAL PRIMARY KEY,
-	Name		TEXT,
-	FB_Login	TEXT,
-	UNIQUE(Name, FB_Login)
+	FB_Login	TEXT PRIMARY KEY,
+	Name		TEXT
 )
 
 CREATE TABLE videos (
@@ -44,14 +42,14 @@ CREATE TABLE sessions (
 
 CREATE TABLE friends (
 	ID		SERIAL PRIMARY KEY,
-	User		INTEGER REFERENCES user (ID) NOT NULL,
+	User		INTEGER REFERENCES user (FB_Login) NOT NULL,
 	Friend		INTEGER REFERENCES user (ID) NOT NULL
 )
 	
 CREATE TABLE like (
 	ID		SERIAL PRIMARY KEY,
 	Log_Time	TIMESTAMP,
-	User_ID		INTEGER REFERENCES users (ID) NOT NULL,
+	User_ID		INTEGER REFERENCES users (FB_Login) NOT NULL,
 	Video_ID	INTEGER REFERENCES videos (ID) NOT NULL
 	UNIQUE(User_ID, Video_ID)	--Each user can LIKE a video once
 )
@@ -59,14 +57,14 @@ CREATE TABLE like (
 CREATE TABLE watch (
 	ID		SERIAL PRIMARY KEY,
 	Log_Time	TIMESTAMP,
-	User_ID		INTEGER REFERENCES users (ID) NOT NULL,
+	User_ID		INTEGER REFERENCES users (FB_Login) NOT NULL,
 	Video_ID	INTEGER REFERNECES videos (ID) NOT NULL
 )
 
 CREATE TABLE login (
 	ID		SERIAL PRIMARY KEY,
 	Log_Time	TIMESTAMP,
-	User_ID		INTEGER REFERENCES users (ID) NOT NULL,
+	User_ID		INTEGER REFERENCES users (FB_Login) NOT NULL,
 	Session_ID	INTEGER REFERENCES session (ID) NOT NULL
 )
 
