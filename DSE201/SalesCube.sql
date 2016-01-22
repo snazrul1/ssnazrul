@@ -35,7 +35,7 @@ CREATE TABLE products (
 
 CREATE TABLE location (
         ID              SERIAL PRIMARY KEY,
-	Costumer_ID	INTERGER REFERENCES costumers (ID),
+	Costumer_ID	INTEGER REFERENCES costumers (ID),
 	State_ID	INTEGER REFERENCES states (ID) UNIQUE
 )
 
