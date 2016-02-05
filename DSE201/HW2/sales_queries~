@@ -71,4 +71,3 @@ FROM
 		GROUP BY s.customer_id
 		ORDER BY c_total_sale DESC
 		LIMIT 20) topCus;
-
