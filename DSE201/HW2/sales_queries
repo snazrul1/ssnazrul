@@ -1,0 +1,75 @@
+
+1. Show the total sales (quantity sold and dollar value) for each customer.
+
+SELECT SUM(s.quantity) as Quantity, SUM(s.price) as Sales
+FROM sales.sale s
+GROUP BY s.customer_id
+ORDER BY s.customer_id ASC
+
+
+
+2. Show the total sales for each state.
+
+SELECT t.state_name, SUM(cSale.customer_total) as Sales 
+FROM sales.customer c, sales.state t, 
+	(
+	SELECT s.customer_id, SUM(s.price) as customer_total 
+	FROM sales.sale s 
+	GROUP BY s.customer_id
+	) 
+	cSale
+WHERE cSale.customer_id = c.customer_id AND c.state_id = t.state_id
+GROUP BY t.state_name;  
+
+
+
+3. Show the total sales for each product, for a given customer. Only products that were actually
+bought by the given customer. Order by dollar value.
+
+SELECT s.product_id, SUM(s.price) as Sales
+FROM sales.sale s
+WHERE s.customer_id = 1
+GROUP BY s.product_id
+ORDER BY sale DESC 
+
+
+
+4. Show the total sales for each product and customer. Order by dollar value.
+
+SELECT  s.product_id, s.customer_id, SUM(s.price) as Sales
+FROM sales.sale s
+GROUP BY s.product_id, s.customer_id
+ORDER BY sale ASC;
+
+
+
+5. Show the total sales for each product category and state.
+
+SELECT cu.state_id, c.category_id, SUM(s.price) as Sale
+FROM sales.sale s, sales.category c, sales.product p, sales.customer cu
+WHERE s.product_id = p.product_id 	
+	AND p.category_id = c.category_id 
+	AND s.customer_id = cu.customer_id
+GROUP BY cu.state_id, c.category_id
+
+
+
+6. For each one of the top 20 product categories and top 20 customers, it returns a tuple (top
+product, top customer, quantity sold, dollar value)
+
+SELECT top20Cat.category_id, top20Cus.customer_id, top20Cus.quantity, top20Cus.c_total_sale
+FROM
+	(SELECT DISTINCT g.category_id, SUM(s.price) as g_total_sale
+		FROM sales.sale s, sales.product p, sales.category g
+		WHERE s.product_id = p.product_id AND p.category_id = g.category_id
+		GROUP BY g.category_id
+		ORDER BY g_total_sale DESC
+		LIMIT 20) top20Cat,
+	(SELECT DISTINCT s.customer_id, SUM(s.quantity) as quantity, SUM(s.price) as c_total_sale
+		FROM sales.sale s
+		GROUP BY s.customer_id
+		ORDER BY c_total_sale DESC
+		LIMIT 20) top20Cus;
+
+
+
