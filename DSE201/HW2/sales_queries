@@ -72,3 +72,4 @@ FROM
 		ORDER BY c_total_sale DESC
 		LIMIT 20) topCus;
 
+
