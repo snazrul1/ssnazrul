@@ -75,3 +75,19 @@ FROM cats.video v,
 	myKindOfLikesVideos
 WHERE v.video_id = myKindOfLikesVideos.video_id
 
+
+6. “My kind of cats – with preference (to cat aficionados that have the same tastes)”: The Top-10
+cat videos are the ones that have collected the highest sum of weighted likes from every other user Y
+(i.e., given a cat video, each like on it, is multiplied according to a weight).T
+
+SELECT l.video_id, weight.lc * COUNT(l.like_id) as weighted_like
+FROM cats.likes l, 
+	(
+	SELECT l2.user_id AS user_id, LOG(1+SUM(l2.like_id)) AS lc
+	FROM cats.likes l2
+	GROUP BY video_id, user_id
+	) 
+	weight
+WHERE weight.user_id = l.user_id
+GROUP BY l.video_id
+ORDER BY weighted_like DESC;

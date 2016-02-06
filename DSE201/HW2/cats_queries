@@ -89,5 +89,6 @@ FROM cats.likes l,
 	) 
 	weight
 WHERE weight.user_id = l.user_id
-GROUP BY l.video_id
-ORDER BY weighted_like DESC;
+GROUP BY l.video_id, weight.lc
+ORDER BY weighted_like DESC
+LIMIT 10;
