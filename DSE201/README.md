@@ -1,4 +1,4 @@
-DSE201
+DSE201: Database Management Systems
 ======
 
-Course directory for DSE201
+This course will provide an introduction to the management of structured data beginning with an introduction to database models including relational, hierarchical, and network approaches. It will also cover topics in database system implementation including query languages and system architectures; parallel, column-oriented, and array-based database systems; advanced SQL features including user-defined functions (UDFs), triggers, statistical functions; and support for spatial data.
