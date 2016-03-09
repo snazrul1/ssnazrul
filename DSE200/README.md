@@ -1,7 +1,3 @@
-# DSE200-Notebooks-2015
-Repository for the students of DSE200, 2015
+# DSE200: Python for Data Analysis
 
-This repository will be expanded during the quarter and will hold the notebooks we cover in class, 
-the excercise notebooks, and the solutions to those excercises.
-
-Students are expected to fork this repository, and to commit their solutions to their private repository.
+The goal of this course is to bring students with diverse background and experience to a common level of competency in programming in the context of complex and noisy data. Solid competency in Python programming provides its owner with autonomy and independence in their work. Introduction to object oriented programming using python. Regular expressions. Numpy and Numerical Processing. Ipython and Plotting. Data analysis using PANDAS. Webpage scraping using Scrapy. The Twitter API. NLTK.

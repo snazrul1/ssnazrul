@@ -1,4 +1,4 @@
-DSE203
+DSE203: Data Integration and ETL
 ======
 
-Course directory for DSE203
+The course is designed to provide students with the fundamentals of data integration and includes: schema mapping and matching, entity disambiguation, ontology development and management, data provenance, and crowd sourcing and machine learning as strategies for integration. The course will also require hands-on projects in which students will work on a data integration problem requiring integration of two or more datasets taken from an application domain of their choice (e.g. geospatial data, healthcare, financial applications, bioinformatics, etc). 
